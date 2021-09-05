@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane id="gridPane" fx:id="gridPane" alignment="CENTER" hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<columnConstraints>
+    <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints />
+</columnConstraints>
+<rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+    <RowConstraints minHeight="10.0" prefHeight="70.0" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+    <RowConstraints />
+</rowConstraints>
+<children>
+    <Label id="superLabel" text="SUPER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+    <TextField id="valTextField1" fx:id="valTextField1" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+    <Label id="valueLabel2" text="Value 2:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+        <padding>
+            <Insets right="10.0" />
+        </padding></Label>
+    <TextField id="valTextField2" fx:id="valTextField2" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+    <Label id="resultLabel" text="Result:" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+        <padding>
+            <Insets right="20.0" />
+        </padding></Label>
+    <Button id="addButton" fx:id="addButton" mnemonicParsing="false" onAction="#add" text="Add" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+    <Button id="subButton" fx:id="subButton" mnemonicParsing="false" onAction="#sub" text="Subtract" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+    <Button id="mulButton" fx:id="mulButton" mnemonicParsing="false" onAction="#mul" text="Multiply" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+    <Button id="divButton" fx:id="divButton" mnemonicParsing="false" onAction="#div" text="Divide" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+    <Label id="calculatorLabel" text="CALCULATOR" GridPane.columnIndex="3" />
+    <Button id="clrButton" fx:id="clrButton" mnemonicParsing="false" onAction="#clr" text="CLEAR" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+    <Button id="extButton" fx:id="extButton" mnemonicParsing="false" onAction="#ext" text="EXIT" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+    <Label id="valueLabel1" text="Value 1:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+        <padding>
+            <Insets right="10.0" />
+        </padding></Label>
+    <Label id="resLabel" fx:id="resLabel" prefWidth="100.0" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+</children>
+</GridPane>

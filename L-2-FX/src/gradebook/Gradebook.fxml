@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane id="borderPane" fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gradebook.Controller">
+   <top>
+      <Label id="titleLabel" fx:id="titleLabel" text="GradeBook" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="50.0" top="30.0" />
+         </BorderPane.margin>
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+   </top>
+   <right>
+   </right>
+   <left>
+   </left>
+   <bottom>
+      <VBox id="reportVbox" fx:id="reportVbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label id="classReportLabel" fx:id="classReportLabel" text="Class Report">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+             <Button id="generateReportButton" fx:id="generateReportButton" mnemonicParsing="false" onAction="#generateReport" text="Generate" />
+             <Label id="gradeCountLabel" fx:id="gradeCountLabel" text="&lt;&lt; Letter grades by number of entries &gt;&gt;" />
+            <Label id="gpaLabel" fx:id="gpaLabel" text="&lt;&lt; Calculated class GPA &gt;&gt;" />
+         </children>
+         <padding>
+            <Insets top="40.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets bottom="10.0" />
+         </BorderPane.margin>
+      </VBox>
+   </bottom>
+   <center>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="120.0" BorderPane.alignment="TOP_CENTER">
+         <children>
+             <VBox id="writeVbox" fx:id="writeVbox" alignment="CENTER" prefHeight="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+                 <children>
+                     <Label id="gradeEntryLabel" fx:id="gradeEntryLabel" text="&lt;&lt; stub &gt;&gt;">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                     <TextField id="gradeEntryTextField" fx:id="gradeEntryTextField" alignment="CENTER" promptText="Student grade" />
+                     <Button id="enterGradeButton" fx:id="enterGradeButton" mnemonicParsing="false" onAction="#parseGradeInput" text="Enter Grade" />
+                     <Button id="doneButton" fx:id="doneButton" mnemonicParsing="false" onAction="#finalizeTransaction" text="DONE" />
+                 </children>
+             </VBox>
+             <VBox id="readVbox" fx:id="readVbox" alignment="CENTER" prefHeight="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+                 <children>
+                     <Label id="gradeRetrievalLabel" fx:id="gradeRetrievalLabel" text="File Selection (I/O)">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                     <TextField id="fileSelectionTextField" fx:id="fileSelectionTextField" alignment="CENTER" onMouseClicked="#addFileNameOnClick" promptText="e.g., gradebook.txt" />
+                     <Button id="fileStatusButton" fx:id="fileStatusButton" mnemonicParsing="false" onAction="#checkFileStatus" text="File Status" />
+                     <Button id="exitButton" fx:id="exitButton" mnemonicParsing="false" onAction="#exit" text="EXIT" />
+                 </children>
+             </VBox>
+         </children>
+      </HBox>
+   </center>
+   <padding>
+      <Insets top="10.0" />
+   </padding>
+</BorderPane>
