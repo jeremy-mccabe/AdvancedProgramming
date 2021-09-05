@@ -1,4 +1,4 @@
-package sample;
+package calculator;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
