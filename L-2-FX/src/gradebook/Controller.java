@@ -31,8 +31,6 @@ public class Controller implements Initializable {
     @FXML private Button exitButton;
     // Bottom pane:
     @FXML private VBox reportVbox;
-    // ** HOMEWORK ASSIGNMENT RESPONSE **
-    // The following Label controls were selected for grade display due to simplicity and practicality.
     @FXML private Label gradeCountLabel;
     @FXML private Label gpaLabel;
 
@@ -74,7 +72,7 @@ public class Controller implements Initializable {
         YELLOW  ("#ffff00"),
         GREEN   ("#00ff00"),
         DEFAULT ("#F4F162"),
-        BLUE ("#006EE6"),
+        BLUE    ("#006EE6"),
         ;
         private final String color;
         ButtonColor(String color) {
@@ -107,13 +105,6 @@ public class Controller implements Initializable {
         fileStatusButton.setText(fileStatusString + FileStatus.UNKNOWN.toString());
 
         gradeEntryLabel.setText(gradeEntryString + WriteStatus.READY.toString());
-
-//        gradeCountLabel.setText(
-//                "A=?,  " + "A-=?,  " + "B+=?,  " + "B=?,  " + "B-=?,  " + "C+=?,  " +
-//                "C=?,  " + "C-=?,  " + "D+=?,  " + "D=?,  " + "D-=?,  " + "F=?"
-//        );
-
-//        gpaLabel.setText("Class GPA: " + "Uncalculated");
     }
 
     @FXML

@@ -8,9 +8,7 @@ import static java.lang.Math.pow;
 public class Main {
 
     public static void main(String[] args) {
-
-        // Problem #1
-
+        
         Scanner input = new Scanner(System.in);
         int weightInPounds = -1;
         int heightInInches = -1;

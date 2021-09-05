@@ -196,13 +196,5 @@ public class Main {
                     "Place file in root level directory."
             );
         }
-
-        // Design a JavaFX application that allows you to input the grades data
-        // Display the grade output data from (ii) in any Java FX GUI display widget
-        // Explain choice of display widget
-        // Create a button to cancel any operations and finally terminate the GUI program
-
-        // Submission: Program code, documented explanations all code design (zipped)
-
     }
 }

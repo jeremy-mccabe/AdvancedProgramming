@@ -18,11 +18,6 @@ class FileIODelegate {
     private Path filePath = null;
     private String dir = "./";
 
-    // Client methods:
-    void enterGrade() {
-        // dont think i need this
-    }
-
     static void writeGrade(String grade) throws Exception {
         try {
             String delimiter = "\n";

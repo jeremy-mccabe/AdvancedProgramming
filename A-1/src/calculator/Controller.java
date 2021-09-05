@@ -86,5 +86,4 @@ public class Controller implements Initializable {
         Stage stage = (Stage) extButton.getScene().getWindow();
         stage.close();
     }
-
 }
