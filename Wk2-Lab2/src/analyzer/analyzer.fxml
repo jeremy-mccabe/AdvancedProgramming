@@ -1,8 +1,76 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="analyzer.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane id="borderPane" fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="analyzer.Controller">
+
+   <top>
+      <HBox id="textFieldHbox" fx:id="textFieldHbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox id="principalVbox" fx:id="principalVbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Label id="principalLabel" fx:id="principalLabel" text="PRINCIPAL" />
+                  <TextField id="principalTextField" fx:id="principalTextField" alignment="CENTER" promptText="e.g., 140000" />
+               </children>
+            </VBox>
+            <VBox id="interestRateVbox" fx:id="interestRateVbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Label id="interestRateLabel" fx:id="interestRateLabel" text="INTEREST (APR)" />
+                  <TextField id="interestRateTextField" fx:id="interestRateTextField" alignment="CENTER" promptText="e.g., 8.0" />
+               </children>
+            </VBox>
+            <VBox id="durationVbox" fx:id="durationVbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <Label id="durationLabel" fx:id="durationLabel" text="DURATION" />
+                  <TextField id="durationTextField" fx:id="durationTextField" alignment="CENTER" promptText="e.g., 360" />
+               </children>
+            </VBox>
+         </children></HBox>
+   </top>
+   <center>
+      <VBox id="centerVbox" fx:id="centerVbox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox id="verifyStatusHbox" fx:id="verifyStatusHbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+               <children>
+                  <Button id="verifyInputButton" fx:id="verifyInputButton" mnemonicParsing="false" onAction="#submitAndVerifyInput" text="Verify Input" />
+                  <Label id="statusLabel" fx:id="statusLabel" text="STATUS:  Pending" />
+               </children></HBox>
+            <HBox id="generateReportHbox" fx:id="generateReportHbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button id="generateReportButton" fx:id="generateReportButton" mnemonicParsing="false" onAction="#generateReport" text="Generate Report" />
+               </children></HBox>
+            <HBox id="outputHbox" fx:id="outputHbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox id="outputVbox" fx:id="outputVbox" alignment="CENTER" prefHeight="200.0">
+                     <children>
+                        <HBox id="variablesHbox" fx:id="variablesHbox" alignment="CENTER" prefHeight="100.0" spacing="100.0">
+                           <children>
+                              <Label id="principalLabel" fx:id="principalResultLabel" text="Principal" />
+                              <Label id="interestRateLabel" fx:id="interestRateResultLabel" text="Interest (APR)" />
+                              <Label id="durationLabel" fx:id="durationResultLabel" text="Duration" />
+                           </children></HBox>
+                        <HBox id="calculatedHbox" fx:id="calculatedHbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+                           <children>
+                              <Label id="monthlyPaymentLabel" fx:id="monthlyPaymentResultLabel" text="Monthly Payment" />
+                              <Label id="totalInterestLabel" fx:id="totalInterestResultLabel" text="Total Interest Paid" />
+                           </children></HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+    <bottom>
+        <HBox id="clearExitHbox" fx:id="clearExitHbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button id="clearButton" fx:id="clearButton" mnemonicParsing="false" onAction="#clear" text="CLEAR" />
+                <Button id="exitButton" fx:id="exitButton" mnemonicParsing="false" onAction="#exit" text="EXIT" />
+            </children></HBox>
+    </bottom>
+</BorderPane>
