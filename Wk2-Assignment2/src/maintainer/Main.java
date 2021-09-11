@@ -11,9 +11,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("maintainer.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("Array Maintainer");
+        primaryStage.setScene(new Scene(root, 850, 450));
         primaryStage.show();
+        root.requestFocus();
     }
 
 

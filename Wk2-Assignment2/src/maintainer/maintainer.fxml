@@ -1,8 +1,87 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="maintainer.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.TextFlow?>
+
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <items>
+          <VBox alignment="CENTER" spacing="10.0">
+              <children>
+            <Label text="ACCESSOR" />
+                  <TextFlow />
+                  <TextFlow />
+                  <Button mnemonicParsing="false" text="Display Array" />
+                  <Button mnemonicParsing="false" text="Sort &amp; Display" />
+            <HBox alignment="CENTER" spacing="15.0">
+               <children>
+                        <Button mnemonicParsing="false" text="Display Size" />
+                  <Label text="Size:  Unknown" />
+               </children>
+            </HBox>
+                  <HBox alignment="CENTER" spacing="15.0">
+                      <children>
+                          <Button mnemonicParsing="false" text="Search / Display" />
+                          <TextField prefWidth="100.0" />
+                      </children>
+                  </HBox>
+              </children>
+          </VBox>
+      <VBox alignment="CENTER" spacing="30.0">
+         <children>
+            <Label alignment="CENTER" text="MUTATOR" />
+            <HBox alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Add ALL" />
+                        <Button mnemonicParsing="false" text="Add" />
+                         <Button mnemonicParsing="false" text="Add" />
+                         <Button mnemonicParsing="false" text="Add" />
+                         <Button mnemonicParsing="false" text="Add" />
+                         <Button mnemonicParsing="false" text="Add" />
+                     </children>
+                  </VBox>
+                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                       <children>
+                           <Label text="Value">
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin></Label>
+                        <TextField />
+                           <TextField />
+                           <TextField />
+                           <TextField />
+                           <TextField />
+                       </children>
+                   </VBox>
+                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                       <children>
+                           <Label text="\@Index">
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding></Label>
+                           <TextField />
+                           <TextField />
+                           <TextField />
+                           <TextField />
+                           <TextField />
+                       </children>
+                   </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Remove" />
+                  <Spinner prefWidth="100.0" />
+               </children></HBox>
+         </children>
+      </VBox>
+    </items>
+</SplitPane>
