@@ -1,6 +1,5 @@
 package maintainer;
 
-import com.sun.org.apache.bcel.internal.classfile.Unknown;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,14 +11,15 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    private ArrayModel arrayModel;
     private final int initialArraySize = 20;
-
+    private boolean autoDisplaySelected;
+    private ArrayModel arrayModel;
     private Alert alert;
 
     @FXML private ListView<String> displayListView;
     @FXML private Label arraySizeLabel;
-    @FXML private Spinner removeSpinner;
+    @FXML private Spinner<String> removeSpinner;
+    @FXML private ToggleButton autoDisplayToggleButton;
     @FXML private Button removeButton;
     @FXML private Button addButton1;
     @FXML private Button addButton2;
@@ -48,14 +48,35 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         arrayModel = new ArrayModel(initialArraySize);
+        autoDisplayToggleButton.setSelected(false);
+        autoDisplaySelected = false;
         registerListeners();
         setupAlertDialog();
+        setSpinner();
+    }
+
+    private void setSpinner() {
+        ObservableList<String> elems = FXCollections.observableArrayList(
+                arrayModel.getSpinnerStringArrayList()
+        );
+        removeSpinner.setValueFactory(
+                new SpinnerValueFactory.ListSpinnerValueFactory<>(
+                        FXCollections.observableArrayList(elems)
+                )
+        );
     }
 
     @FXML
     private void reseedArray() {
-        arrayModel.seedArray(initialArraySize);
-        arrayModel.setIsSorted(false);
+        if (autoDisplaySelected) {
+            setDefaultCellStyling();
+            arrayModel.seedArray(initialArraySize);
+            arrayModel.setIsSorted(false);
+            displayArray();
+        } else {
+            arrayModel.seedArray(initialArraySize);
+            arrayModel.setIsSorted(false);
+        }
     }
 
     @FXML
@@ -63,6 +84,7 @@ public class Controller implements Initializable {
         ObservableList<String> elems = FXCollections.observableArrayList(
                 arrayModel.getStringArrayList()
         );
+        setDefaultCellStyling();
         displayListView.setItems(elems);
     }
 
@@ -72,6 +94,7 @@ public class Controller implements Initializable {
             ObservableList<String> combinedElems = FXCollections.observableArrayList(
                     arrayModel.getCombinedCollatedStringArrayList()
             );
+            setSortedCellStyling();
             displayListView.setItems(combinedElems);
             arrayModel.setIsSorted(true);
         } else {
@@ -85,6 +108,7 @@ public class Controller implements Initializable {
             ObservableList<String> combinedElems = FXCollections.observableArrayList(
                     arrayModel.getCombinedUncollatedStringArrayList()
             );
+            setSortedCellStyling();
             displayListView.setItems(combinedElems);
             arrayModel.setIsSorted(true);
         } else {
@@ -94,21 +118,106 @@ public class Controller implements Initializable {
 
     @FXML
     private void displaySize() {
-        arraySizeLabel.setText(""+arrayModel.getSize());
+        arraySizeLabel.setText("Size: " + arrayModel.getSize());
     }
 
     @FXML
     private void searchAndDisplay() {
+        try {
+            Integer key = Integer.parseInt(searchAndDisplayTextField.getText());
 
+            ObservableList<String> elems = FXCollections.observableArrayList(
+                    arrayModel.getMatchedStringArrayList(key)
+            );
+
+            setHighlightedCellStyling();
+            displayListView.setItems(elems);
+
+        } catch (NumberFormatException nfe) {
+            displayErrorAlert("Must enter an integer value to search.");
+        }
+    }
+
+    public class ArrayElementDefaultCell extends ListCell<String> {
+        ArrayElementDefaultCell() {}
+        @Override protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+            if (item != null) {
+                setText(item);
+            }
+        }
+    }
+
+    public class ArrayElementHighlightedCell extends ListCell<String> {
+        ArrayElementHighlightedCell() {}
+        @Override protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (item == null || empty) {
+                setGraphic(null);
+                setText(item);
+                setStyle(null);
+            }
+            else if (item.contains("(Match)")) {
+                setText(item);
+                setStyle("-fx-text-fill: black; -fx-background-color: yellow; ");
+            } else {
+                setText(item);
+                setStyle(null);
+            }
+        }
+    }
+
+    public class ArrayElementSortedCell extends ListCell<String> {
+        ArrayElementSortedCell() {}
+        @Override protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+
+            if (item == null || empty) {
+                setGraphic(null);
+                setText(item);
+                setStyle(null);
+            }
+            else if (item.contains("(Old)")) {
+                setText(item);
+                setStyle("-fx-background-color: grey; ");
+            } else {
+                setText(item);
+                setStyle(null);
+            }
+        }
+    }
+
+    private void setHighlightedCellStyling() {
+        displayListView.setCellFactory(list -> new ArrayElementHighlightedCell());
+    }
+
+    private void setDefaultCellStyling() {
+        displayListView.setCellFactory(list -> new ArrayElementDefaultCell());
+    }
+
+    private void setSortedCellStyling() {
+        displayListView.setCellFactory(list -> new ArrayElementSortedCell());
     }
 
     @FXML
     private void remove() {
-
+        try {
+            arrayModel.remove(Integer.parseInt(removeSpinner.getValue()));
+            // reset size label and spinner
+            arraySizeLabel.setText("Size:  Changed");
+            setSpinner();
+            if (autoDisplaySelected) {
+                setDefaultCellStyling();
+                displayArray();
+            }
+        } catch (NumberFormatException nfe) {
+            displayInfoAlert("Array is already empty!");
+        }
     }
 
     private void registerListeners() {
-        // FX Control IDs == ((Control) event.getSource()).getId()
+
         addAllButton.setOnAction(event -> {
             arrayModel.setIsSorted(false);
             try {
@@ -152,14 +261,20 @@ public class Controller implements Initializable {
                     indexTextField3.clear();
                     indexTextField4.clear();
                     indexTextField5.clear();
-                    // reset size label
+                    // reset size label and spinner
                     arraySizeLabel.setText("Size:  Changed");
+                    setSpinner();
+                    if (autoDisplaySelected) {
+                        setDefaultCellStyling();
+                        displayArray();
+                    }
                 }
 
             } catch (Exception e) {
                 displayErrorAlert("Invalid number entered.  All values must be integers.");
             }
         });
+
         addButton1.setOnAction(event -> {
             arrayModel.setIsSorted(false);
             try {
@@ -174,13 +289,19 @@ public class Controller implements Initializable {
                     // reset controls
                     valueTextField1.clear();
                     indexTextField1.clear();
-                    // reset size label
+                    // reset size label and spinner
                     arraySizeLabel.setText("Size:  Changed");
+                    setSpinner();
+                    if (autoDisplaySelected) {
+                        setDefaultCellStyling();
+                        displayArray();
+                    }
                 }
             } catch (Exception e) {
                 displayErrorAlert("Invalid number entered.  All values must be integers.");
             }
         });
+
         addButton2.setOnAction(event -> {
             arrayModel.setIsSorted(false);
             try {
@@ -195,13 +316,19 @@ public class Controller implements Initializable {
                     // reset controls
                     valueTextField2.clear();
                     indexTextField2.clear();
-                    // reset size label
+                    // reset size label and spinner
                     arraySizeLabel.setText("Size:  Changed");
+                    setSpinner();
+                    if (autoDisplaySelected) {
+                        setDefaultCellStyling();
+                        displayArray();
+                    }
                 }
             } catch (Exception e) {
                 displayErrorAlert("Invalid number entered.  All values must be integers.");
             }
         });
+
         addButton3.setOnAction(event -> {
             arrayModel.setIsSorted(false);
             try {
@@ -216,13 +343,19 @@ public class Controller implements Initializable {
                     // reset controls
                     valueTextField3.clear();
                     indexTextField3.clear();
-                    // reset size label
+                    // reset size label and spinner
                     arraySizeLabel.setText("Size:  Changed");
+                    setSpinner();
+                    if (autoDisplaySelected) {
+                        setDefaultCellStyling();
+                        displayArray();
+                    }
                 }
             } catch (Exception e) {
                 displayErrorAlert("Invalid number entered.  All values must be integers.");
             }
         });
+
         addButton4.setOnAction(event -> {
             arrayModel.setIsSorted(false);
             try {
@@ -237,13 +370,19 @@ public class Controller implements Initializable {
                     // reset controls
                     valueTextField4.clear();
                     indexTextField4.clear();
-                    // reset size label
+                    // reset size label and spinner
                     arraySizeLabel.setText("Size:  Changed");
+                    setSpinner();
+                    if (autoDisplaySelected) {
+                        setDefaultCellStyling();
+                        displayArray();
+                    }
                 }
             } catch (Exception e) {
                 displayErrorAlert("Invalid number entered.  All values must be integers.");
             }
         });
+
         addButton5.setOnAction(event -> {
             arrayModel.setIsSorted(false);
             try {
@@ -258,13 +397,22 @@ public class Controller implements Initializable {
                     // reset controls
                     valueTextField5.clear();
                     indexTextField5.clear();
-                    // reset size label
+                    // reset size label and spinner
                     arraySizeLabel.setText("Size:  Changed");
+                    setSpinner();
+                    if (autoDisplaySelected) {
+                        setDefaultCellStyling();
+                        displayArray();
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Message: " + e.getMessage());
                 displayErrorAlert("Invalid number entered.  All values must be integers.");
             }
+        });
+
+        autoDisplayToggleButton.setOnAction(event -> {
+            autoDisplaySelected = autoDisplayToggleButton.isSelected();
         });
     }
 

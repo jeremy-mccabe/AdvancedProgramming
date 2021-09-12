@@ -53,6 +53,20 @@ public class ArrayModel {
         array = newArray;
     }
 
+    void remove(int idx) {
+
+        Integer[] newArray = new Integer[array.length-1];
+
+        for (int i = 0, j =0; i < newArray.length; i++, j++) {
+            if (j == idx) {
+                j++;
+            }
+                newArray[i] = array[j];
+        }
+
+        array = newArray;
+    }
+
     // type ArrayList<String> required as argument to observableArrayList
     // @ Controller.java (used to populate ListView)...
     ArrayList<String> getStringArrayList() {
@@ -61,6 +75,20 @@ public class ArrayModel {
         list = new ArrayList<>(array.length);
         for (int i = 0; i < array.length; i++) {
             list.add("Elem   @  ["+i+"]:   " + array[i]);
+        }
+        return list;
+    }
+
+    ArrayList<String> getMatchedStringArrayList(Integer key) {
+
+        ArrayList<String> list;
+        list = new ArrayList<>(array.length);
+        for (int i = 0; i < array.length; i++) {
+            if (key.equals(array[i])) {
+                list.add("(Match)   Elem   @  ["+i+"]:   " + array[i]);
+            } else {
+                list.add("Elem   @  ["+i+"]:   " + array[i]);
+            }
         }
         return list;
     }
@@ -127,5 +155,15 @@ public class ArrayModel {
         }
 
         return combinedList;
+    }
+
+    ArrayList<String> getSpinnerStringArrayList() {
+
+        ArrayList<String> list;
+        list = new ArrayList<>(array.length);
+        for (int i = 0; i < array.length; i++) {
+            list.add(""+i);
+        }
+        return list;
     }
 }

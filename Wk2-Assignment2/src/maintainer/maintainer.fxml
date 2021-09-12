@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
@@ -22,6 +23,7 @@
             </ListView>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
+                  <ToggleButton fx:id="autoDisplayToggleButton" mnemonicParsing="false" text="Auto-Display" />
                         <Button fx:id="displayArrayButton" mnemonicParsing="false" onAction="#displayArray" text="Display Array" />
                   <Button fx:id="reseedArrayButton" mnemonicParsing="false" onAction="#reseedArray" text="Reseed Array" />
                </children>
@@ -92,7 +94,8 @@
             <HBox alignment="CENTER" spacing="10.0">
                <children>
                   <Button fx:id="removeButton" mnemonicParsing="false" onAction="#remove" text="Remove" />
-                  <Spinner fx:id="removeSpinner" prefWidth="100.0" />
+                  <Label text="Elem @ " />
+                  <Spinner fx:id="removeSpinner" prefWidth="80.0" />
                </children></HBox>
          </children>
       </VBox>
