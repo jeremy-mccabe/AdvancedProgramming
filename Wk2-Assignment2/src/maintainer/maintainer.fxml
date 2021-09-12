@@ -3,83 +3,96 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.TextFlow?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.55" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maintainer.Controller">
     <items>
-          <VBox alignment="CENTER" spacing="10.0">
+          <VBox alignment="CENTER" spacing="15.0">
               <children>
             <Label text="ACCESSOR" />
-                  <TextFlow />
-                  <TextFlow />
-                  <Button mnemonicParsing="false" text="Display Array" />
-                  <Button mnemonicParsing="false" text="Sort &amp; Display" />
+            <ListView fx:id="displayListView" prefHeight="200.0" prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="50.0" right="50.0" />
+               </VBox.margin>
+            </ListView>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                        <Button fx:id="displayArrayButton" mnemonicParsing="false" onAction="#displayArray" text="Display Array" />
+                  <Button fx:id="reseedArrayButton" mnemonicParsing="false" onAction="#reseedArray" text="Reseed Array" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                        <Button fx:id="sortAndDisplayCollatedButton" mnemonicParsing="false" onAction="#sortAndDisplayCollated" text="Sort / Display (Collated)" />
+                  <Button fx:id="sortAndDisplayUncollatedButton" mnemonicParsing="false" onAction="#sortAndDisplayUncollated" text="Sort / Display (Uncollated)" />
+               </children>
+            </HBox>
             <HBox alignment="CENTER" spacing="15.0">
                <children>
-                        <Button mnemonicParsing="false" text="Display Size" />
-                  <Label text="Size:  Unknown" />
+                        <Button fx:id="displaySizeButton" mnemonicParsing="false" onAction="#displaySize" text="Display Size" />
+                  <Label fx:id="arraySizeLabel" text="Size:  Unknown" />
                </children>
             </HBox>
                   <HBox alignment="CENTER" spacing="15.0">
                       <children>
-                          <Button mnemonicParsing="false" text="Search / Display" />
-                          <TextField prefWidth="100.0" />
+                          <Button fx:id="searchAndDisplayButton" mnemonicParsing="false" onAction="#searchAndDisplay" text="Search / Display" />
+                          <TextField fx:id="searchAndDisplayTextField" prefWidth="100.0" />
                       </children>
                   </HBox>
               </children>
           </VBox>
-      <VBox alignment="CENTER" spacing="30.0">
+      <VBox alignment="CENTER" spacing="40.0">
          <children>
             <Label alignment="CENTER" text="MUTATOR" />
             <HBox alignment="CENTER">
                <children>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Add ALL" />
-                        <Button mnemonicParsing="false" text="Add" />
-                         <Button mnemonicParsing="false" text="Add" />
-                         <Button mnemonicParsing="false" text="Add" />
-                         <Button mnemonicParsing="false" text="Add" />
-                         <Button mnemonicParsing="false" text="Add" />
+                        <Button fx:id="addAllButton" mnemonicParsing="false" text="Add ALL" />
+                        <Button fx:id="addButton1" mnemonicParsing="false" text="Add" />
+                         <Button fx:id="addButton2" mnemonicParsing="false" text="Add" />
+                         <Button fx:id="addButton3" mnemonicParsing="false" text="Add" />
+                         <Button fx:id="addButton4" mnemonicParsing="false" text="Add" />
+                         <Button fx:id="addButton5" mnemonicParsing="false" text="Add" />
                      </children>
                   </VBox>
-                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                        <children>
                            <Label text="Value">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin></Label>
-                        <TextField />
-                           <TextField />
-                           <TextField />
-                           <TextField />
-                           <TextField />
+                        <TextField fx:id="valueTextField1" />
+                           <TextField fx:id="valueTextField2" />
+                           <TextField fx:id="valueTextField3" />
+                           <TextField fx:id="valueTextField4" />
+                           <TextField fx:id="valueTextField5" />
                        </children>
                    </VBox>
-                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                        <children>
                            <Label text="\@Index">
                            <padding>
                               <Insets bottom="10.0" />
                            </padding></Label>
-                           <TextField />
-                           <TextField />
-                           <TextField />
-                           <TextField />
-                           <TextField />
+                           <TextField fx:id="indexTextField1" />
+                           <TextField fx:id="indexTextField2" />
+                           <TextField fx:id="indexTextField3" />
+                           <TextField fx:id="indexTextField4" />
+                           <TextField fx:id="indexTextField5" />
                        </children>
                    </VBox>
                </children>
             </HBox>
             <HBox alignment="CENTER" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" text="Remove" />
-                  <Spinner prefWidth="100.0" />
+                  <Button fx:id="removeButton" mnemonicParsing="false" onAction="#remove" text="Remove" />
+                  <Spinner fx:id="removeSpinner" prefWidth="100.0" />
                </children></HBox>
          </children>
       </VBox>

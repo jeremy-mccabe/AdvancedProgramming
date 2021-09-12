@@ -39,6 +39,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle arg1) {
+        analyzer = new Analyzer();
         decimalPlaces = 2;
         setupAlertDialog();
         registerListeners();
@@ -64,7 +65,7 @@ public class Controller implements Initializable {
                 verifyInputButton.setDefaultButton(false);
                 status = Status.INVALID;
                 statusLabel.setText(Strings.statusInvalidString);
-                displayWarningAlert("Input type/entry was invalid, needs to be re-entered");
+                displayWarningAlert("Input type/entry was invalid, needs to be reentered");
                 principalTextField.clear();
                 interestRateTextField.clear();
                 durationTextField.clear();
@@ -81,7 +82,7 @@ public class Controller implements Initializable {
         } catch (NumberFormatException nfe) {
             System.out.println(nfe.getMessage());
             // alert user
-            displayWarningAlert("Input type/entry was invalid, needs to be re-entered");
+            displayWarningAlert("Input type/entry was invalid, needs to be reentered");
             statusLabel.setText(Strings.statusInvalidString);
             status = Status.INVALID;
             principalTextField.clear();
@@ -90,7 +91,7 @@ public class Controller implements Initializable {
         } catch (ArithmeticException ae) {
             System.out.println(ae.getMessage());
             // alert user
-            displayWarningAlert("Numerical calculations were invalid, needs to be re-entered");
+            displayWarningAlert("Numerical calculations were invalid, needs to be reentered");
             statusLabel.setText(Strings.statusInvalidString);
             status = Status.INVALID;
             principalTextField.clear();
@@ -154,7 +155,6 @@ public class Controller implements Initializable {
     }
 
     private void setupAlertDialog() {
-        analyzer = new Analyzer();
         status = Status.INVALID;
         alert = new Alert(Alert.AlertType.NONE);
     }
