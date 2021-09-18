@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="health.Controller">
+    <center>
+        <HBox alignment="TOP_CENTER" spacing="60.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" spacing="20.0">
+                <VBox alignment="CENTER" spacing="10.0">
+                    <HBox alignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Blood Pressure (Systolic)" />
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="10.0">
+                        <TextField fx:id="bpTextField" alignment="CENTER" promptText="e.g., 100" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="mm/Hg" />
+                    </HBox>
+                </VBox>
+                <VBox alignment="CENTER" spacing="10.0">
+                    <HBox alignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Body Mass Index (BMI)" />
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="10.0">
+                        <TextField fx:id="bmiTextField" alignment="CENTER" promptText="e.g., 26" />
+                  <Label text="Index" />
+                    </HBox>
+                </VBox>
+                <VBox alignment="CENTER" spacing="10.0">
+                    <HBox alignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Blood Glucose (Hemoglobin A/1c)" />
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="10.0">
+                        <TextField fx:id="bgTextField" alignment="CENTER" promptText="e.g., 160" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="g/dL" />
+                    </HBox>
+                </VBox>
+            </VBox>
+            <VBox alignment="CENTER" spacing="20.0">
+                <VBox alignment="CENTER" spacing="10.0">
+                    <HBox alignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="HDL Cholesterol ('Good')" />
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="10.0">
+                        <TextField fx:id="hdlTextField" alignment="CENTER" promptText="e.g., 41" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="mg/dL" />
+                    </HBox>
+                </VBox>
+                <VBox alignment="CENTER" spacing="10.0">
+                    <HBox alignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="LDL Cholesterol ('Bad')" />
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="10.0">
+                        <TextField fx:id="ldlTextField" alignment="CENTER" promptText="e.g., 80" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="mg/dL" />
+                    </HBox>
+                </VBox>
+                <VBox alignment="CENTER" spacing="10.0">
+                    <HBox alignment="CENTER">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Triglycerides ('Fatty Acids')" />
+                    </HBox>
+                    <HBox alignment="CENTER" spacing="10.0">
+                        <TextField fx:id="tgTextField" alignment="CENTER" promptText="e.g., 230" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="mg/dL" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </HBox>
+    </center>
+   <bottom>
+      <VBox alignment="TOP_CENTER" spacing="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Health Report:" />
+            <HBox alignment="CENTER" spacing="40.0">
+               <children>
+                  <Button fx:id="generateReportButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generateReport" text="Generate Report" />
+                  <Button fx:id="generateAndSaveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generateAndSave" text="Generate &amp; Save" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" spacing="40.0">
+               <children>
+                  <Button fx:id="loadFileButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadFile" text="Load File" />
+                  <TextField fx:id="fileTextField" alignment="CENTER" promptText="e.g., file.txt" />
+                  <Button fx:id="viewFilesButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#viewFiles" text="View Files" />
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="45.0" />
+         </padding>
+      </VBox>
+   </bottom>
+</BorderPane>
