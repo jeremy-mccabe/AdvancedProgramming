@@ -1,0 +1,7 @@
+Blood Pressure (Diastolic):						(Normal)   =   100 mm/Hg
+Body Mass Index (BMI):						(Normal)   =   24.41
+Blood Glucose (Hemoglobin A/1c):				(Good)   =   170 g/dL
+HDL Cholesterol ('Good'):						(Optimal)   =   50 mg/dL
+LDL Cholesterol ('Bad'):						(Normal)   =   110 mg/dL
+Triglycerides ('3 Fatty Acids'):					(Normal)   =   140 mg/dL
+Total Cholesterol (HDL, LDL, Triglycerides):		(Excellent)   =   188 mm/Hg

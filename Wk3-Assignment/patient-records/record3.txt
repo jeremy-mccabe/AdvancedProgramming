@@ -1,0 +1,7 @@
+Blood Pressure (Diastolic):						(Moderate)   =   140 mm/Hg
+Body Mass Index (BMI):						(OBESE)   =   36.61
+Blood Glucose (Hemoglobin A/1c):				(Marginal)   =   240 g/dL
+HDL Cholesterol ('Good'):						(Optimal)   =   50 mg/dL
+LDL Cholesterol ('Bad'):						(VERY HIGH)   =   180 mg/dL
+Triglycerides ('3 Fatty Acids'):					(Normal)   =   140 mg/dL
+Total Cholesterol (HDL, LDL, Triglycerides):		(HIGH)   =   258 mm/Hg
