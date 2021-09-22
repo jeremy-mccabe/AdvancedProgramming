@@ -105,7 +105,6 @@ public class Controller implements Initializable {
 
         try {
             if (status == Status.VALID) {
-
                 // do report:
                 principalResultLabel.setText(Strings.principalString + " = $" + principalTextField.getText());
                 interestRateResultLabel.setText(Strings.aprString + " = " + interestRateTextField.getText() + "%");
@@ -118,7 +117,6 @@ public class Controller implements Initializable {
                         Strings.totalInterestString + " = $" + String.format("%.2f",
                                 analyzer.calculateTotalInterest())
                 );
-
                 // zeroize text input fields:
                 principalTextField.clear();
                 interestRateTextField.clear();

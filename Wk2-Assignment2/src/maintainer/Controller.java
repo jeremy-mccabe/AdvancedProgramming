@@ -2,6 +2,7 @@ package maintainer;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -53,6 +54,16 @@ public class Controller implements Initializable {
         registerListeners();
         setupAlertDialog();
         setSpinner();
+
+        while (true) {
+            // polling
+            // sync
+            // ???= "blocking"
+            // t1 -> A , t2 -> B
+            // has the user touched button1?
+            //if yes ->
+            // if no ->
+        }
     }
 
     private void setSpinner() {
