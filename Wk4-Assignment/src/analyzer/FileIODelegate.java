@@ -26,6 +26,7 @@ class FileIODelegate {
         Path filePath = Paths.get(gradesDir + gradesFile + fileExt);
 
         if (Files.exists(filePath)) {
+
             try {
 
                 reader = new BufferedReader(new FileReader(filePath.toString()));
@@ -41,6 +42,7 @@ class FileIODelegate {
                 System.out.println(e.getMessage());
                 return null;
             }
+
         } else {
             System.out.println("File '" + filePath.getFileName() + "' does not exist.");
             return null;
